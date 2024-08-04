@@ -14,6 +14,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column;
         }
 
         .chat-container {
@@ -25,6 +26,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            margin-bottom: 10px;
         }
 
         .header {
@@ -96,6 +98,13 @@
         button:hover {
             background-color: #21867a;
         }
+
+        .fine-print {
+            font-size: 0.75rem;
+            color: #555;
+            text-align: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -110,6 +119,9 @@
             <input type="text" id="user-input" placeholder="Type your message...">
             <button onclick="sendMessage()">Send</button>
         </div>
+    </div>
+    <div class="fine-print">
+        * This is for demonstration purposes. Data is not saved when exited.
     </div>
     <script>
         const config = {
