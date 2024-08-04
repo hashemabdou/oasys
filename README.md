@@ -18,7 +18,11 @@ The Oasys Health Chatbot is a web-based application that leverages the OpenAI GP
 - Secure API key management
 - Responsive design
 
+Notes for me:
+run 'node server.js' in terminal to run on live-server
+
 To-do list:
 
-2. make send button when press enter
-3. make it look nicer
+1. make it look nicer
+2. can it remember me and have our old chats? save my data? anonymously?
+3. publish it somehow?

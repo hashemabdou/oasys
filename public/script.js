@@ -28,7 +28,14 @@ function appendMessage(className, message) {
     const chatBox = document.getElementById('chat-box');
     const messageElement = document.createElement('div');
     messageElement.className = `message ${className}`;
-    messageElement.textContent = message;
+    
+    // Split the message by newline characters and create separate paragraphs
+    message.split('\n').forEach(line => {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = line;
+        messageElement.appendChild(paragraph);
+    });
+
     chatBox.appendChild(messageElement);
     chatBox.scrollTop = chatBox.scrollHeight;
 }
@@ -44,7 +51,16 @@ async function sendMessage() {
     appendMessage('bot-message', response);
 }
 
+function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+}
+
 window.addEventListener('load', () => {
     const welcomeMessage = "Hello! I'm your mental health assistant. How can I help you today?";
     appendMessage('bot-message', welcomeMessage);
+
+    const userInput = document.getElementById('user-input');
+    userInput.addEventListener('keydown', handleKeyDown);
 });
