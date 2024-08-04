@@ -19,7 +19,7 @@ The Oasys Health Chatbot is a web-based application that leverages the OpenAI GP
 - Responsive design
 
 Notes for me:
-run 'node server.js' in terminal to run on live-server
+- run 'node server.js' in terminal to run on live-server
 
 To-do list:
 
