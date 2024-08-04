@@ -1,5 +1,5 @@
 async function getChatbotResponse(message) {
-    const apiUrl = '/api/chat'; // Your backend endpoint
+    const apiUrl = 'http://localhost:3000/api/chat'; // Your backend endpoint
 
     try {
         const response = await fetch(apiUrl, {

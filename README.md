@@ -20,6 +20,5 @@ The Oasys Health Chatbot is a web-based application that leverages the OpenAI GP
 
 To-do list:
 
-1. what is hashem@Hashems-MBP
 2. make send button when press enter
 3. make it look nicer
