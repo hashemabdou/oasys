@@ -1,17 +1,16 @@
 const express = require('express');
-const cors = require('cors'); // Add this line
+const cors = require('cors');
 const fetch = require('node-fetch');
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors()); // Add this line
+app.use(cors());
 app.use(express.json());
-app.use(express.static('public')); // Serve static files from the 'public' directory
 
 app.post('/api/chat', async (req, res) => {
-    const userMessage = req.body.message;
+    const messages = req.body.messages;
     const apiKey = process.env.OPENAI_API_KEY;
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -21,18 +20,15 @@ app.post('/api/chat', async (req, res) => {
             'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-            model: 'gpt-4-turbo', // Use the GPT-4-turbo model
-            messages: [
-                { role: 'system', content: 'You are a helpful and supportive mental health therapist.' },
-                { role: 'user', content: userMessage }
-            ],
+            model: 'gpt-4-turbo',
+            messages: messages,
             max_tokens: 150,
             temperature: 0.7
         })
     });
 
     const data = await response.json();
-    res.json(data.choices[0].message.content.trim());
+    res.json({ message: data.choices[0].message.content.trim() });
 });
 
 app.listen(port, () => {

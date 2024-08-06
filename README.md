@@ -22,14 +22,8 @@ Notes for me:
 
 - run 'node server.js' in terminal to run on live-server
 
-- frontend can't access the backend if on the internet which is why github version won't work. need to deploy backend server to a publicly accessible platform such as Heroku. steps:
-+ heroku login
-    after this step i need to add payment method online
-+ heroku create
-+ git push heroku main
-+ heroku config:set OPENAI_API_KEY=your_actual_api_key_here
-+ heroku open
-Once your backend is deployed, update your script.js file to use the Heroku URL instead of localhost:3000.
+- remember: git push heroku main
+and also git push origin main 
 
 
 
@@ -38,4 +32,3 @@ To-do list:
 1. it doesn't save the chat and build on it, each message is new
 1. make it look nicer
 2. can it remember me and have our old chats? save my data? anonymously?
-3. make it dynamically change size

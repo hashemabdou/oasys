@@ -1,6 +1,11 @@
+let messageHistory = [
+    { role: 'system', content: 'You are a helpful and supportive mental health therapist.' }
+];
+
 async function getChatbotResponse(message) {
-    "const apiUrl = 'http://localhost:3000/api/chat'; // Your backend endpoint"
-    const apiUrl = 'https://shrouded-fjord-22624-f195efef797c.herokuapp.com/api/chat'; // Replace with your actual Heroku URL
+    const apiUrl = 'https://shrouded-fjord-22624-f195efef797c.herokuapp.com/api/chat'; // Ensure this points to the correct endpoint
+
+    messageHistory.push({ role: 'user', content: message });
 
     try {
         const response = await fetch(apiUrl, {
@@ -8,7 +13,7 @@ async function getChatbotResponse(message) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ message })
+            body: JSON.stringify({ messages: messageHistory })
         });
 
         if (!response.ok) {
@@ -18,7 +23,10 @@ async function getChatbotResponse(message) {
         }
 
         const data = await response.json();
-        return data;
+        const botMessage = data.message;
+        messageHistory.push({ role: 'assistant', content: botMessage });
+
+        return botMessage;
     } catch (error) {
         console.error('Error: ', error);
         return 'Error: Unable to communicate with chatbot';
