@@ -6,19 +6,21 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-const allowedOrigins = ['http://127.0.0.1:5500', 'https://hashemabdou.github.io/'];
+const allowedOrigins = ['http://127.0.0.1:5500', 'https://hashemabdou.github.io'];
 
-app.use(cors({
+const corsOptions = {
     origin: function (origin, callback) {
-        if (!origin) return callback(null, true); // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true); // Allow requests with no origin (e.g., mobile apps or curl requests)
         if (allowedOrigins.indexOf(origin) === -1) {
             const msg = 'The CORS policy for this site does not allow access from the specified origin.';
             return callback(new Error(msg), false);
         }
         return callback(null, true);
-    }
-}));
+    },
+    optionsSuccessStatus: 200 // Some legacy browsers choke on 204
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.post('/api/chat', async (req, res) => {

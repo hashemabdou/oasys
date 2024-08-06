@@ -3,7 +3,7 @@ let messageHistory = [
 ];
 
 async function getChatbotResponse(message) {
-    const apiUrl = 'https://shrouded-fjord-22624-f195efef797c.herokuapp.com/api/chat'; // Ensure this points to the correct endpoint
+    const apiUrl = 'https://shrouded-fjord-22624-f195efef797c.herokuapp.com/api/chat';
 
     messageHistory.push({ role: 'user', content: message });
 
@@ -38,7 +38,6 @@ function appendMessage(className, message) {
     const messageElement = document.createElement('div');
     messageElement.className = `message ${className}`;
     
-    // Split the message by newline characters and create separate paragraphs
     message.split('\n').forEach(line => {
         const paragraph = document.createElement('p');
         paragraph.textContent = line;
