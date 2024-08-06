@@ -21,7 +21,7 @@ app.post('/api/chat', async (req, res) => {
             'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-            model: 'gpt-4-turbo',
+            model: 'gpt-4-turbo', // Use the GPT-4-turbo model
             messages: [
                 { role: 'system', content: 'You are a helpful and supportive mental health therapist.' },
                 { role: 'user', content: userMessage }
