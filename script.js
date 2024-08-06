@@ -1,5 +1,6 @@
 async function getChatbotResponse(message) {
     const apiUrl = 'http://localhost:3000/api/chat'; // Your backend endpoint
+    "const apiUrl = 'https://your-heroku-app.herokuapp.com/api/chat'; // Replace with your actual Heroku URL"
 
     try {
         const response = await fetch(apiUrl, {
