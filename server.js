@@ -6,7 +6,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-const allowedOrigins = ['http://127.0.0.1:5500', 'https://hashemabdou.github.io/oasys/'];
+const allowedOrigins = ['http://127.0.0.1:5500', 'https://hashemabdou.github.io/'];
 
 app.use(cors({
     origin: function (origin, callback) {
